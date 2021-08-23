@@ -5,6 +5,7 @@ class Profile extends Component {
   render() {
 
     const { user, isAuthenticated  } = this.props.auth0;
+    console.log(user.email);
     return (
         isAuthenticated && (
           <div>
