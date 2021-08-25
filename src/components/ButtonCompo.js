@@ -3,19 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
 export class ButtonCompo extends Component {
-
-    deleteData = () =>{
-        this.props.deleteBooks(this.props.book._id)
-    }
-
-
+    
     render() {
+        console.log(this.props.book);
         return (
-            <div key={this.props.index}>
-            {/* {this.props.book.title}
-            {this.props.book.description}
-            {this.props.book._id} */}
-                <Button onClick={()=>this.deleteData}>Delete</Button>
+            <div key={this.props.idx}>
+            
+                
+                <Button onClick={()=>this.props.deleteBooks(this.props.book._id)}>Delete</Button>
+                <Button onClick={()=>{this.props.updateBooks(this.props.book._id)}}>Update</Button>
             </div>
         )
     }
