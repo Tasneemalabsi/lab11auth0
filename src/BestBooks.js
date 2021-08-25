@@ -118,11 +118,35 @@ addBooks = async (event) => {
           This is a collection of my favorite books
         </p>
 
-        <form onSubmit={this.addBooks}>
-       <input type="text" name='bookName' placeholder='add your favorite book' />
-       <input type="text" name='shortDescription' placeholder='add a short description' />
-       <input type="submit" value="Add to favorites" />
-         </form> 
+        <Button onClick={this.handleShow}>Add Books</Button>
+         <Modal show={this.state.show} onHide={this.handleClose} >
+       <Modal.Header closeButton={true} onClick={this.handleClose}>
+       <Modal.Title>add your favorite book</Modal.Title>
+     </Modal.Header>
+     <Modal.Body>
+     <Form onSubmit={this.addBooks}>
+   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" >
+     <Form.Label>add a book</Form.Label>
+     <Form.Control type="textarea" name='bookName'  />
+   </Form.Group>
+   <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+     <Form.Label>add a short description</Form.Label>
+     <Form.Control as="textarea" rows={2} name='shortDescription' />
+   </Form.Group>
+   <Button variant="primary" type="submit" onClick={this.handleClose} >
+     Submit
+   </Button>
+ </Form>
+        
+          </Modal.Body>
+     <Modal.Footer>
+       <Button variant="secondary" onClick={()=>{this.handleClose()}}>
+         Close
+       </Button>
+      
+     </Modal.Footer>
+   </Modal> 
+        
 
         
         
@@ -159,34 +183,13 @@ addBooks = async (event) => {
   }
 }
 
-//          <Button onClick={this.handleShow}>Add Books</Button>
-//          <Modal show={this.handleShow} onHide={this.handleClose} >
-//        <Modal.Header closeButton={true} onClick={this.handleClose}>
-//        <Modal.Title>add your favorite book</Modal.Title>
-//      </Modal.Header>
-//      <Modal.Body>
-//      <Form onSubmit={this.addBooks}>
-//    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" >
-//      <Form.Label>add a book</Form.Label>
-//      <Form.Control type="textarea" name='bookName'  />
-//    </Form.Group>
-//    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-//      <Form.Label>add a short description</Form.Label>
-//      <Form.Control as="textarea" rows={2} name='shortDescription' />
-//    </Form.Group>
-//    <Button variant="primary" type="submit">
-//      Submit
-//    </Button>
-//  </Form>
-        
-//           </Modal.Body>
-//      <Modal.Footer>
-//        <Button variant="secondary" onClick={()=>{this.handleClose()}}>
-//          Close
-//        </Button>
-      
-//      </Modal.Footer>
-//    </Modal> 
+         
+
+{/* <form onSubmit={this.addBooks}>
+       <input type="text" name='bookName' placeholder='add your favorite book' />
+       <input type="text" name='shortDescription' placeholder='add a short description' />
+       <input type="submit" value="Add to favorites" />
+         </form>  */}
 
 
 export default withAuth0(MyFavoriteBooks);
